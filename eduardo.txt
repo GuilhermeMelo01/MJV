@@ -2,6 +2,11 @@ Eduardo Mateus Immig
 eduardo-immig@hotmail.com
 Sou desenvolvedor web a quase 1 ano e atualmente trabalho com as linguagens de PHP, JavaScript, Ember e Node, curso Engenharia da Computação onde aprendo sobre C.
 1 - O que gosta de fazer nos tempos vagos?
-2 - Gosta de assistir/praticar algum esporte? Qual?
-3 - Como descobriu que queria ser desenvolvedor?
+ R: Infelizmente eu jogo um Lolzinho kk, mas gosto bastante de passar um tempo com meus amigos (que a maioria é desenvolvedor ainda então kkkk)
 
+2 - Gosta de assistir/praticar algum esporte? Qual?
+ R: Gosto de jogar futsal e volei, mas confesso que eu era bem cria de academia até vir uma coisa chamada faculdade que me impede isso.
+
+3 - Como descobriu que queria ser desenvolvedor?
+ R: Estava no youtube com uns 14 anos quando me deparei com uns videos de um pessoal mexendo em uns codigos muito loucos e eu não entendia nada, 
+    foi ai que eu percebi o que eu queria fazer.

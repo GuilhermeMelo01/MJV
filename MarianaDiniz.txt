@@ -4,6 +4,12 @@ Sobre mim: Tenho 20 anos, carioca e flamenguista doente.
 
 O que te motiva para está, continuar e permanecer na área de tecnologia, e qual a linguagem de programação que mais gosta?
 
+Demorei muito tempo pra me encontrar em algo, antes de conhecer a programação nem sabia que seria possívem um "match" como esse. Gosto do impacto que a tecnologia tem no mundo e gosto de fazer parte disso. Atualmente tenho mais afinidade com Kotlin.
+
 Qual foi o último livro que você leu, e quais aprendizados teve com ele?
 
+"Mitologia Nordica", de Neil Gaiman. É uma leitura pra relaxar.
+
 Quais expectativas você tem com a MJV School Java?
+
+Espero conhecer mais da linguagem e exercitar minha lógica de programação.

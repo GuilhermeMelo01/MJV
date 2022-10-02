@@ -2,6 +2,7 @@ package powerclasses.src;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,7 +12,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class TrabalhoMJV {
 
     public static void main(String[] args) throws IOException {
-        File caminho = new File("C:/Users/User/MJV/arquivos/arquivo.txt);
+        File caminho = new File("C:/Users/User/MJV/arquivos/arquivo.txt");
 
         boolean novoArquivo = caminho.createNewFile();
         System.out.println(novoArquivo ? "Criado com sucesso." : "Erro ao criar");
@@ -37,7 +38,7 @@ public class TrabalhoMJV {
         existeTamanho(arquivo);
 
         int numeroArquivos = arquivo.getNameCount();
-        System.out.println("Existem " + numeroArquivos +  " no Path ");
+        System.out.println("Existem " + numeroArquivos +  " nomes no caminho do Path ");
 
         URI uriVal = arquivo.toUri();
         System.out.println("O URI é  " + uriVal );

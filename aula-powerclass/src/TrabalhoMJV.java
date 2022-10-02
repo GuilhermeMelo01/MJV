@@ -11,7 +11,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class TrabalhoMJV {
 
     public static void main(String[] args) throws IOException {
-        File caminho = new File("C:/Users/User/MJV/arquivos/arquivo.txt");
+        File caminho = new File("C:/Users/User/MJV/arquivos/arquivo.txt);
 
         boolean novoArquivo = caminho.createNewFile();
         System.out.println(novoArquivo ? "Criado com sucesso." : "Erro ao criar");
@@ -35,6 +35,12 @@ public class TrabalhoMJV {
         System.out.println("O arquivo " + nome + " possui o seguinte o conteúdo " + Files.readString(arquivo, UTF_8));
 
         existeTamanho(arquivo);
+
+        int numeroArquivos = arquivo.getNameCount();
+        System.out.println("Existem " + numeroArquivos +  " no Path ");
+
+        URI uriVal = arquivo.toUri();
+        System.out.println("O URI é  " + uriVal );
 
         boolean apenasLeitura = caminho.setReadOnly();
         System.out.println(apenasLeitura ? "Alterado com sucesso." : "Erro ao alterar");

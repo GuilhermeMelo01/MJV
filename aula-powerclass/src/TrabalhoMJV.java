@@ -27,9 +27,7 @@ public class TrabalhoMJV {
 		// Determina o objeto caminho e converte a String de caminho em Path
 		Path caminho = Paths.get(arquivo.toString());
 
-		/*
-		 * Outra alternativa: Path arquivo = caminho.toPath();
-		 */
+		// Outra alternativa: Path arquivo = caminho.toPath();
 
 		// Escrevendo um conteúdo para ser digitado no arquivo
 		String conteudo = "MJV School Java - Power Classes";
@@ -74,7 +72,7 @@ public class TrabalhoMJV {
 		boolean ends = path.endsWith("arquivo.txt");
 		System.out.println(ends ? "Final do Path Compativel" : "Final do Path incompativel");
 
-		// Passa p path para hash
+		// Passa o path para hash
 		int hash = path.hashCode();
 		System.out.println("O codigo HASH e: " + hash);
 
@@ -89,9 +87,7 @@ public class TrabalhoMJV {
 
 	public static void existeTamanho(Path arquivo) {
 
-		// retorna true se o diretorio ou arquivo do objeto File existe, falso o
-		// contrario
-
+		// retorna true se o diretorio ou arquivo do objeto File existe, falso o contrario
 		if (arquivo.toFile().exists()) {
 			System.out.println("O caminho especificado existe !");
 

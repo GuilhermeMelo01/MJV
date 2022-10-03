@@ -70,6 +70,14 @@ public class TrabalhoMJV {
 		URI uriVal = caminho.toUri();
 		System.out.println("O URI é  " + uriVal);
 
+		// Valida se o final do Path corresponde a string passada.
+		boolean ends = path.endsWith("arquivo.txt");
+		System.out.println(ends ? "Final do Path Compativel" : "Final do Path incompativel");
+
+		// Passa p path para hash
+		int hash = path.hashCode();
+		System.out.println("O codigo HASH e: " + hash);
+
 		// Altera o estado do arquivo para "somente leitura"
 		boolean apenasLeitura = arquivo.setReadOnly();
 		System.out.println(apenasLeitura ? "Alterado com sucesso." : "Erro ao alterar");
@@ -89,7 +97,7 @@ public class TrabalhoMJV {
 
 			// Mostra o tamanho do arquivo em bytes;
 			int size = arquivo.toString().length();
-			System.out.println("O tamanho do arquivo em bytes e: " + size + " bytes");
+			System.out.println("O tamanho do Path do arquivo em bytes e: " + size + " bytes");
 
 		} else
 			System.out.println("Endereco errado");

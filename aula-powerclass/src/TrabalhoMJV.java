@@ -59,18 +59,19 @@ public class TrabalhoMJV {
         boolean deletar = arquivo.delete();
         System.out.println(deletar ? "Deletado com sucesso." : "Erro ao deletar");
     }
+
     public static void existeTamanho(Path arquivo) {
 
         // retorna true se o diret�rio ou arquivo do objeto File existe, falso o contr�rio
-
         if (arquivo.toFile().exists()) {
-            System.out.println("O caminho especificado existe !");
+            System.out.println("O caminho especificado existe!");
 
             // Mostra o tamanho do arquivo em bytes;
             int size = arquivo.toString().length();
-            System.out.println("O tamanho do arquivo em bytes e: " + size + " bytes");
+            System.out.println("O tamanho do arquivo em bytes é: " + size + " bytes");
 
-        } else
+        } else {
             System.out.println("Endereco errado");
+        }
     }
 }

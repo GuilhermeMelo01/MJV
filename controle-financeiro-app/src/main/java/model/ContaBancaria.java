@@ -1,4 +1,4 @@
-package model.controlefinanceiro;
+package model;
 
 import exceptions.SaldoInsuficienteException;
 
@@ -26,7 +26,7 @@ public class ContaBancaria {
         this.statusDaConta = statusDaConta;
     }
 
-    public void sacar(BigDecimal valor) throws SaldoInsuficienteException {
+    public void sacar(BigDecimal valor){
     	try {
     		verificarSaldo(valor);
     	}
@@ -42,8 +42,6 @@ public class ContaBancaria {
             e.printStackTrace();
         }
     }
-    
-    
 
     public String getNumeroConta() {
         return numeroConta;
@@ -93,6 +91,7 @@ public class ContaBancaria {
     		throw new SaldoInsuficienteException("Saldo insuficiente para essa transação.");
     	}
     }
+
     private void verificarSaldo(BigDecimal valor, ContaBancaria conta) throws SaldoInsuficienteException {
         if (valor.compareTo(this.saldoDaConta) <= 0) {
             this.saldoDaConta = this.saldoDaConta.subtract(valor);

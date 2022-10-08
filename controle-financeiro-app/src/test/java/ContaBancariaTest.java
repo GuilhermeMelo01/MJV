@@ -1,4 +1,4 @@
-import model.controlefinanceiro.ContaBancaria;
+import model.ContaBancaria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

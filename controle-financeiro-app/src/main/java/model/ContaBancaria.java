@@ -1,6 +1,6 @@
 package model;
 
-import exceptions.SaldoInsuficienteException;
+import exception.SaldoInsuficienteException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

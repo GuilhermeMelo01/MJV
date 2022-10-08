@@ -26,6 +26,15 @@ public class ContaBancaria {
         this.statusDaConta = statusDaConta;
     }
 
+    public void sacar(BigDecimal valor) throws SaldoInsuficienteException {
+    	try {
+    		verificarSaldo(valor);
+    	}
+    	catch(SaldoInsuficienteException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
     public void transferir(BigDecimal valor, ContaBancaria conta) {
         try{
             verificarSaldo(valor, conta);
@@ -33,7 +42,8 @@ public class ContaBancaria {
             e.printStackTrace();
         }
     }
-
+    
+    
 
     public String getNumeroConta() {
         return numeroConta;
@@ -74,7 +84,15 @@ public class ContaBancaria {
     public Boolean getStatusDaConta() {
         return statusDaConta;
     }
-
+    
+    private void verificarSaldo(BigDecimal valor) throws SaldoInsuficienteException {
+    	if (valor.compareTo(saldoDaConta) <= 0) {
+    		saldoDaConta = saldoDaConta.subtract(valor);
+    		}
+    	else {
+    		throw new SaldoInsuficienteException("Saldo insuficiente para essa transação.");
+    	}
+    }
     private void verificarSaldo(BigDecimal valor, ContaBancaria conta) throws SaldoInsuficienteException {
         if (valor.compareTo(this.saldoDaConta) <= 0) {
             this.saldoDaConta = this.saldoDaConta.subtract(valor);

@@ -1,3 +1,4 @@
+import exception.SaldoInsuficienteException;
 import model.ContaBancaria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -48,7 +49,7 @@ public class ContaBancariaTest {
     
     @DisplayName("Teste para verificar se o deposito foi realizado com sucesso")
     @Test
-    void verificaSeDepositoFoiRealizado() {
+    void verificaSeDepositoFoiRealizado() throws SaldoInsuficienteException {
         conta01.depositar(BigDecimal.valueOf(300));
         BigDecimal expectativa = new BigDecimal(800);
         BigDecimal resultado = conta01.getSaldoDaConta();

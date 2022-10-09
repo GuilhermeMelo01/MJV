@@ -18,8 +18,6 @@ public class ContaBancaria {
     private BigDecimal saldoDaConta;
     private Boolean statusDaConta;
 
-    private ArrayList<Extrato> montarExtrato;
-
     public ContaBancaria() {
     }
 

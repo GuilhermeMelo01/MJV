@@ -1,3 +1,5 @@
 .idea
 out
 MJV.iml
+.project/
+.classpath/

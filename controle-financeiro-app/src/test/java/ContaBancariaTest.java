@@ -14,7 +14,7 @@ public class ContaBancariaTest {
     ContaBancaria conta02 = new ContaBancaria("0010", "4324", "Maria",
             LocalDate.of(2003, 8, 12), BigDecimal.valueOf(500), true);
 
-    @DisplayName("Teste para verificar se o valor estar sendo descontado no saldo da conta enviadora")
+    @DisplayName("Teste para verificar se o valor esta sendo descontado no saldo da conta origem")
     @Test
     void verificaSeOValorFoiTiradoDaConta(){
 
@@ -25,7 +25,7 @@ public class ContaBancariaTest {
         Assertions.assertEquals(expectativa, resultado);
     }
 
-    @DisplayName("Teste para verificar se o valor estar sendo depositado no saldo da conta receptora")
+    @DisplayName("Teste para verificar se o valor esta sendo depositado no saldo da conta destino")
     @Test
     void verificaSeOValorFoiDepositadoNaConta(){
 
@@ -36,4 +36,13 @@ public class ContaBancariaTest {
         Assertions.assertEquals(expectativa, resultado);
     }
 
+    @DisplayName("Teste para verificar se o usuário realizou o saque com sucesso")
+    @Test
+    void verificaSeOSaqueFoiRealizado() {
+        conta01.sacar(BigDecimal.valueOf(100));
+        BigDecimal expectativa = new BigDecimal(400);
+        BigDecimal resultado = conta01.getSaldoDaConta();
+
+        Assertions.assertEquals(expectativa, resultado);
+    }
 }

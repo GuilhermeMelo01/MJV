@@ -1,9 +1,11 @@
 package model;
 
 import exception.SaldoInsuficienteException;
+import extrato.Extrato;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class ContaBancaria {
@@ -13,6 +15,8 @@ public class ContaBancaria {
     private LocalDate dataDeNascimento;
     private BigDecimal saldoDaConta;
     private Boolean statusDaConta;
+
+    private ArrayList<Extrato> montarExtrato;
 
     public ContaBancaria() {
     }
@@ -30,7 +34,9 @@ public class ContaBancaria {
     public void sacar(BigDecimal valor){
     	try {
     		verificarSaldo(valor);
-    	}
+            Extrato ext = new Extrato("SAQUE");
+            ext.gravarDados(ext);
+        }
     	catch(SaldoInsuficienteException e) {
     		e.printStackTrace();
     	}
@@ -39,6 +45,8 @@ public class ContaBancaria {
     public void transferir(BigDecimal valor, ContaBancaria conta) {
         try{
             verificarSaldo(valor, conta);
+            Extrato ext = new Extrato(conta.numeroConta + " - " + conta.numeroAgencia, valor);
+            ext.gravarDados(ext);
         }catch (SaldoInsuficienteException e){
             e.printStackTrace();
         }

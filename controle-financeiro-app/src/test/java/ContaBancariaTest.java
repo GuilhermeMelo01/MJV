@@ -45,4 +45,14 @@ public class ContaBancariaTest {
 
         Assertions.assertEquals(expectativa, resultado);
     }
+    
+    @DisplayName("Teste para verificar se o deposito foi realizado com sucesso")
+    @Test
+    void verificaSeDepositoFoiRealizado() {
+        conta01.depositar(BigDecimal.valueOf(300));
+        BigDecimal expectativa = new BigDecimal(800);
+        BigDecimal resultado = conta01.getSaldoDaConta();
+
+        Assertions.assertEquals(expectativa, resultado);
+    }
 }

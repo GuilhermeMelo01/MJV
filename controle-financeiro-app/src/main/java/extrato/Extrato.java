@@ -20,13 +20,13 @@ public class Extrato implements Serializable{
 		this.statusDaConta = status;
 	}
 
-	public Extrato(String operacao, BigDecimal valor){
+	public Extrato(String operacao, BigDecimal valor, Boolean status){
 		//seta a data da operação.
 		this.data = LocalDate.now();
 		this.operacao = operacao;
 		this.contaDestino = "";
 		this.saldoDaConta = valor;
-		this.statusDaConta = false;
+		this.statusDaConta = status;
 	}
 
 	public void gravarDados(Extrato ext){

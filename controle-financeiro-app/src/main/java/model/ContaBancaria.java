@@ -36,7 +36,7 @@ public class ContaBancaria {
     public void sacar(BigDecimal valor){
     	try {
     		verificarSaldo(valor);
-            Extrato ext = new Extrato("SAQUE", valor);
+            Extrato ext = new Extrato("SAQUE", valor, getStatusDaConta());
             ext.gravarDados(ext);
         }
     	catch(SaldoInsuficienteException e) {

@@ -53,4 +53,10 @@ public class ExtratoService {
 			System.err.println("Erro: " + ex.toString());
 		}
 	}
+	public void montaExtrato(){
+		//imprme todos os dados do extrato
+		for(Extrato e : this.extrato){
+			System.out.println(e.toString());
+		}
+	}
 }

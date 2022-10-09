@@ -1,7 +1,9 @@
 package model;
 
 import exception.SaldoInsuficienteException;
+import exception.ValidacaoDataException;
 import extrato.Extrato;
+import extrato.ExtratoService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -34,7 +36,7 @@ public class ContaBancaria {
     public void sacar(BigDecimal valor){
     	try {
     		verificarSaldo(valor);
-            Extrato ext = new Extrato("SAQUE");
+            Extrato ext = new Extrato("SAQUE", valor);
             ext.gravarDados(ext);
         }
     	catch(SaldoInsuficienteException e) {
@@ -45,7 +47,7 @@ public class ContaBancaria {
     public void transferir(BigDecimal valor, ContaBancaria conta) {
         try{
             verificarSaldo(valor, conta);
-            Extrato ext = new Extrato(conta.numeroConta + " - " + conta.numeroAgencia, valor);
+            Extrato ext = new Extrato(conta,valor, getStatusDaConta());
             ext.gravarDados(ext);
         }catch (SaldoInsuficienteException e){
             e.printStackTrace();
@@ -107,6 +109,16 @@ public class ContaBancaria {
             conta.saldoDaConta = conta.saldoDaConta.add(valor);
         } else {
             throw new SaldoInsuficienteException("Saldo insuficiente para essa transação.");
+        }
+    }
+
+    private void imprimirExtrato(LocalDate data1, LocalDate data2) throws ValidacaoDataException {
+        if (data1.toString().isBlank() || data1.toString().isBlank()) {
+            throw new ValidacaoDataException("Saldo insuficiente para essa transação.");
+        } else if(data2.isBefore(data1)) {
+            ExtratoService extS = new ExtratoService();
+            extS.ler();
+            extS.montaExtrato();
         }
     }
 }

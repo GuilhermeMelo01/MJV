@@ -45,4 +45,14 @@ public class ContaBancariaTest {
 
         Assertions.assertEquals(expectativa, resultado);
     }
+
+    @DisplayName("Teste para verificar se conta foi cancelada com sucesso")
+    @Test
+    void verificaSeAContaFoiCancelada() {
+        conta01.cancelarConta(true, "justificativa teste");
+        Boolean expectativa = false;
+        Boolean resultado = conta01.getStatusDaConta();
+
+        Assertions.assertEquals(expectativa, resultado);
+    }
 }

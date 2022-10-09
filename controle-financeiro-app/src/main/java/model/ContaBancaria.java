@@ -123,4 +123,13 @@ public class ContaBancaria {
             throw new ValidacaoDataException("Segunda Data Menor que a Primeira.");
         }
     }
+    
+    public void depositar(BigDecimal deposito) throws SaldoInsuficienteException {
+    	if (saldoDaConta.compareTo(BigDecimal.ZERO) < 0 || deposito.compareTo(BigDecimal.ZERO) < 0) {
+			throw new SaldoInsuficienteException("Saldo ou Depósito não pode ser menor que 0");
+		} else {
+			saldoDaConta = saldoDaConta.add(deposito);
+		}
+	}
 }
+

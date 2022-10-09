@@ -95,7 +95,7 @@ public class ContaBancaria {
     }
     
     private void verificarSaldo(BigDecimal valor) throws SaldoInsuficienteException {
-    	if (valor.compareTo(saldoDaConta) <= 0) {
+    	if (valor.compareTo(this.saldoDaConta) <= 0) {
     		saldoDaConta = saldoDaConta.subtract(valor);
     		}
     	else {
@@ -113,12 +113,14 @@ public class ContaBancaria {
     }
 
     private void imprimirExtrato(LocalDate data1, LocalDate data2) throws ValidacaoDataException {
-        if (data1.toString().isBlank() || data1.toString().isBlank()) {
-            throw new ValidacaoDataException("Saldo insuficiente para essa transação.");
-        } else if(data2.isBefore(data1)) {
+        if (data1.toString().isBlank() || data2.toString().isBlank()) {
+            throw new ValidacaoDataException("Data não informada.");
+        } else if(data2.isAfter(data1)) {
             ExtratoService extS = new ExtratoService();
             extS.ler();
-            extS.montaExtrato();
+            extS.montaExtrato(data1, data2);
+        } else{
+            throw new ValidacaoDataException("Segunda Data Menor que a Primeira.");
         }
     }
 }

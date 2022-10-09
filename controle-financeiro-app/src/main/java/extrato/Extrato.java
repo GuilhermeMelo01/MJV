@@ -5,13 +5,11 @@ import java.time.LocalDate;
 import java.io.Serializable;
 import java.math.BigDecimal;
 public class Extrato implements Serializable{
-	private LocalDate data;
-	private String operacao;
-
-	private String contaOrigen;
-	private String contaDestino;
-	private BigDecimal saldoDaConta;
-	private Boolean statusDaConta;
+	public LocalDate data;
+	public String operacao;
+	public String contaDestino;
+	public BigDecimal saldoDaConta;
+	public Boolean statusDaConta;
 
 	public Extrato(ContaBancaria contaDestino, BigDecimal valor, Boolean status){
 		//seta a data da operação.

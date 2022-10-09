@@ -4,7 +4,6 @@ import exception.SaldoInsuficienteException;
 import exception.ValidacaoDataException;
 import extrato.Extrato;
 import extrato.ExtratoService;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -45,62 +44,22 @@ public class ContaBancaria {
     }
     
     public void transferir(BigDecimal valor, ContaBancaria conta) {
-        try{
+        try {
             verificarSaldo(valor, conta);
             Extrato ext = new Extrato(conta,valor, getStatusDaConta());
             ext.gravarDados(ext);
-        }catch (SaldoInsuficienteException e){
+        } catch (SaldoInsuficienteException e){
             e.printStackTrace();
         }
     }
 
-    public String getNumeroConta() {
-        return numeroConta;
-    }
-
-    public void setNumeroConta(String numeroConta) {
-        this.numeroConta = numeroConta;
-    }
-
-    public String getNumeroAgencia() {
-        return numeroAgencia;
-    }
-
-    public void setNumeroAgencia(String numeroAgencia) {
-        this.numeroAgencia = numeroAgencia;
-    }
-
-    public String getNomeCliente() {
-        return nomeCliente;
-    }
-
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
-    }
-
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
-
-    public BigDecimal getSaldoDaConta() {
-        return saldoDaConta;
-    }
-
-    public Boolean getStatusDaConta() {
-        return statusDaConta;
-    }
-    
     private void verificarSaldo(BigDecimal valor) throws SaldoInsuficienteException {
-    	if (valor.compareTo(saldoDaConta) <= 0) {
-    		saldoDaConta = saldoDaConta.subtract(valor);
-    		}
-    	else {
-    		throw new SaldoInsuficienteException("Saldo insuficiente para essa transação.");
-    	}
+        if (valor.compareTo(saldoDaConta) <= 0) {
+            saldoDaConta = saldoDaConta.subtract(valor);
+        }
+        else {
+            throw new SaldoInsuficienteException("Saldo insuficiente para essa transação.");
+        }
     }
 
     private void verificarSaldo(BigDecimal valor, ContaBancaria conta) throws SaldoInsuficienteException {
@@ -120,5 +79,39 @@ public class ContaBancaria {
             extS.ler();
             extS.montaExtrato();
         }
+    }
+
+    public void cancelarConta(Boolean statusConta, String justificativa) {
+        if (!justificativa.isBlank() && statusConta == true) {
+            this.statusDaConta = false;
+        } else if (justificativa.isBlank()) {
+            System.out.println("Justificativa não preenchida");
+        } else {
+            System.out.println("Sua conta já encontra-se cancelada");
+        }
+    }
+
+    public String getNumeroConta() {
+        return numeroConta;
+    }
+
+    public String getNumeroAgencia() {
+        return numeroAgencia;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public LocalDate getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public BigDecimal getSaldoDaConta() {
+        return saldoDaConta;
+    }
+
+    public Boolean getStatusDaConta() {
+        return statusDaConta;
     }
 }

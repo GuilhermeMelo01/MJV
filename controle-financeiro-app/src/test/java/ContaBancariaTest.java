@@ -1,4 +1,5 @@
 import exception.SaldoInsuficienteException;
+import exception.ValidacaoDataException;
 import model.ContaBancaria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -66,4 +67,38 @@ public class ContaBancariaTest {
 
         Assertions.assertEquals(expectativa, resultado);
     }
+
+    @DisplayName("Teste para verificar se a exception de saldo insuficiente para transferenciafoi lançada")
+    @Test
+    void verificaExceptionSaldoInsuficienteTransferencia() {
+        String expectativa = "Saldo insuficiente para essa transaçao.";
+        SaldoInsuficienteException resultado = Assertions.assertThrows(SaldoInsuficienteException.class, () -> {
+            conta01.verificarSaldo(BigDecimal.valueOf(500870), conta01);
+        });
+
+        Assertions.assertEquals(expectativa, resultado.getMessage());
+    }
+
+    @DisplayName("Teste para verificar se a exception de saldo insuficiente para saque foi lançada")
+    @Test
+    void verificaExceptionSaldoInsuficienteSaque() {
+        String expectativa = "Saldo insuficiente para essa transaçao.";
+        SaldoInsuficienteException resultado = Assertions.assertThrows(SaldoInsuficienteException.class, () -> {
+            conta01.verificarSaldo(BigDecimal.valueOf(52815));
+        });
+
+        Assertions.assertEquals(expectativa, resultado.getMessage());
+    }
+
+    @DisplayName("Teste para verificar se a exception de data foi lançada")
+    @Test
+    void verificaDataException() {
+        String expectativa = "Segunda Data Menor que a Primeira.";
+        ValidacaoDataException resultado = Assertions.assertThrows(ValidacaoDataException.class, () -> {
+            conta01.imprimirExtrato(LocalDate.of(2021, 10, 10), LocalDate.of(2021, 10, 10));
+        });
+
+        Assertions.assertEquals(expectativa, resultado.getMessage());
+    }
+
 }

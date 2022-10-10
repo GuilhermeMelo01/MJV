@@ -110,20 +110,20 @@ public class ContaBancaria {
         }
     }
 
-    private void verificarSaldo(BigDecimal valor) throws SaldoInsuficienteException {
+    public void verificarSaldo(BigDecimal valor) throws SaldoInsuficienteException {
         if (valor.compareTo(this.saldoDaConta) <= 0) {
             saldoDaConta = saldoDaConta.subtract(valor);
         } else {
-            throw new SaldoInsuficienteException("Saldo insuficiente para essa transação.");
+            throw new SaldoInsuficienteException("Saldo insuficiente para essa transaçao.");
         }
     }
 
-    private void verificarSaldo(BigDecimal valor, ContaBancaria conta) throws SaldoInsuficienteException {
+    public void verificarSaldo(BigDecimal valor, ContaBancaria conta) throws SaldoInsuficienteException {
         if (valor.compareTo(this.saldoDaConta) <= 0) {
             this.saldoDaConta = this.saldoDaConta.subtract(valor);
             conta.saldoDaConta = conta.saldoDaConta.add(valor);
         } else {
-            throw new SaldoInsuficienteException("Saldo insuficiente para essa transação.");
+            throw new SaldoInsuficienteException("Saldo insuficiente para essa transaçao.");
         }
     }
 

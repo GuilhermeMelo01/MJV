@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="controle-financeiro-app/src/main/java"/>
-	<classpathentry kind="src" path="controle-financeiro-app/src/test/java"/>
-	<classpathentry kind="output" path="controle-financeiro-app/target/classes"/>
-</classpath>

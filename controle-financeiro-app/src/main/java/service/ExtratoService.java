@@ -1,4 +1,6 @@
-package extrato;
+package service;
+
+import model.Extrato;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

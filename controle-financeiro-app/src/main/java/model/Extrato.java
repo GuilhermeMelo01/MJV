@@ -1,6 +1,6 @@
-package extrato;
+package model;
 
-import model.ContaBancaria;
+import service.ExtratoService;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,7 +14,7 @@ public class Extrato implements Serializable{
 	public BigDecimal saldoDaConta;
 	public Boolean statusDaConta;
 
-	public Extrato(ContaBancaria contaDestino, BigDecimal valor, Boolean status){
+	public Extrato(ContaCorrente contaDestino, BigDecimal valor, Boolean status){
 		//seta a data da operação.
 		this.data = LocalDate.now();
 		this.operacao = "TRANSFERÊNCIA";

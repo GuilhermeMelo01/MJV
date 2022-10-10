@@ -2,14 +2,13 @@ package model;
 
 import exception.SaldoInsuficienteException;
 import exception.ValidacaoDataException;
-import extrato.Extrato;
-import extrato.ExtratoService;
+import service.ExtratoService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
-public class ContaBancaria {
+public class ContaCorrente {
     private String numeroConta;
     private String numeroAgencia;
     private String nomeCliente;
@@ -17,10 +16,10 @@ public class ContaBancaria {
     private BigDecimal saldoDaConta;
     private Boolean statusDaConta;
 
-    public ContaBancaria() {
+    public ContaCorrente() {
     }
 
-    public ContaBancaria(String numeroConta, String numeroAgencia, String nomeCliente,
+    public ContaCorrente(String numeroConta, String numeroAgencia, String nomeCliente,
                          LocalDate dataDeNascimento, BigDecimal saldoDaConta, Boolean statusDaConta) {
         this.numeroConta = numeroConta;
         this.numeroAgencia = numeroAgencia;
@@ -76,7 +75,7 @@ public class ContaBancaria {
         }
     }
 
-    public void transferir(BigDecimal valor, ContaBancaria conta) {
+    public void transferir(BigDecimal valor, ContaCorrente conta) {
         try {
             verificarSaldo(valor, conta);
             Extrato ext = new Extrato(conta, valor, getStatusDaConta());
@@ -118,7 +117,7 @@ public class ContaBancaria {
         }
     }
 
-    public void verificarSaldo(BigDecimal valor, ContaBancaria conta) throws SaldoInsuficienteException {
+    public void verificarSaldo(BigDecimal valor, ContaCorrente conta) throws SaldoInsuficienteException {
         if (valor.compareTo(this.saldoDaConta) <= 0) {
             this.saldoDaConta = this.saldoDaConta.subtract(valor);
             conta.saldoDaConta = conta.saldoDaConta.add(valor);

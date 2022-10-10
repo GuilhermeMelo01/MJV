@@ -89,6 +89,8 @@ public class ContaBancaria {
     public void cancelarConta(Boolean statusConta, String justificativa) {
         if (!justificativa.isBlank() && statusConta) {
             this.statusDaConta = false;
+            Extrato ext = new Extrato("CANCELAMENTO", BigDecimal.valueOf(0), getStatusDaConta());
+            ext.gravarDados(ext);
         } else if (justificativa.isBlank()) {
             System.out.println("Justificativa não preenchida");
         } else {

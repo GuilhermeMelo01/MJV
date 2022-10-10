@@ -1,10 +1,13 @@
 package extrato;
-import extrato.ExtratoService;
+
 import model.ContaBancaria;
-import java.time.LocalDate;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+
 public class Extrato implements Serializable{
+
 	public LocalDate data;
 	public String operacao;
 	public String contaDestino;

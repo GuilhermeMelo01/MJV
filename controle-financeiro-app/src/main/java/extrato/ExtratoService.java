@@ -14,8 +14,9 @@ public class ExtratoService {
 	
 	public ExtratoService(){
 		//construtor da classe extrato cria arraylist de dados
-		this.extrato = new ArrayList<Extrato>();
+		this.extrato = new ArrayList<>();
 	}
+
 	public void gravar(Extrato ext){
 		//criado arquivo extrato para salvar os dados das transacoes da conta
 		File arquivo = new File("extrato.dat");
@@ -57,7 +58,8 @@ public class ExtratoService {
 			System.err.println("Erro: " + ex.toString());
 		}
 	}
-	public ArrayList recuperaArquivo(ArrayList extratoArrayList ){
+
+	public ArrayList<Extrato> recuperaArquivo(ArrayList<Extrato> extratoArrayList ){
 		File arquivo = new File("extrato.dat");
 
 		try{
@@ -74,6 +76,7 @@ public class ExtratoService {
 
 		return extratoArrayList;
 	}
+
 	public void montaExtrato(LocalDate data1, LocalDate data2){
 		//imprme todos os dados do extrato
 		String cabeçalho = "=============\nExtrato Bancário\n";
@@ -84,7 +87,7 @@ public class ExtratoService {
 						+ (e.operacao.equals("TRANSFERÊNCIA") ? "Conta Transferência: "
 						+ e.contaDestino + "\nValor: " + e.saldoDaConta + "\n" : "Valor: "
 						+ e.saldoDaConta + "\n") + "Status da Conta: "
-						+ (e.statusDaConta == true ? "ABERTA" : "ENCERRADA") + "\n=================\n";
+						+ (e.statusDaConta ? "ABERTA" : "ENCERRADA") + "\n=================\n";
 				cabeçalho = cabeçalho.concat(corpo);
 			}
 		}

@@ -1,6 +1,6 @@
 .idea
 out
 bin
-*.iml
-.project/
+controle-financeiro-app.iml
 *.classpath
+target

@@ -1,3 +1,4 @@
+import exception.SaldoInsuficienteException;
 import model.ContaBancaria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +17,7 @@ public class ContaBancariaTest {
 
     @DisplayName("Teste para verificar se o valor esta sendo descontado no saldo da conta origem")
     @Test
-    void verificaSeOValorFoiTiradoDaConta(){
+    void verificaSeOValorFoiRetiradoDaConta(){
 
         conta01.transferir(BigDecimal.valueOf(200), conta02);
         BigDecimal expectativa = new BigDecimal(300);

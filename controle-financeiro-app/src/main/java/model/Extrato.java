@@ -14,7 +14,7 @@ public class Extrato implements Serializable{
 	public BigDecimal saldoDaConta;
 	public Boolean statusDaConta;
 
-	public Extrato(ContaCorrente contaDestino, BigDecimal valor, Boolean status){
+	public Extrato(Conta contaDestino, BigDecimal valor, Boolean status){
 		//seta a data da operação.
 		this.data = LocalDate.now();
 		this.operacao = "TRANSFERÊNCIA";

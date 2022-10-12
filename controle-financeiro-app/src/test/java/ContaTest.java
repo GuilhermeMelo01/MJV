@@ -1,5 +1,6 @@
 import exception.SaldoInsuficienteException;
 import exception.ValidacaoDataException;
+import model.Cliente;
 import model.ContaCorrente;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -8,20 +9,17 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class ContaCorrenteTest {
+public class ContaTest {
 
-    ContaCorrente conta01 = new ContaCorrente("3289", "2000", "Guilherme",
-            LocalDate.of(2001, 11, 9), BigDecimal.valueOf(500), true);
-
-    ContaCorrente conta02 = new ContaCorrente("0010", "4324", "Maria",
-            LocalDate.of(2003, 8, 12), BigDecimal.valueOf(500), true);
-
+        Cliente cli1 = new Cliente();
+        ContaCorrente conta01 = new ContaCorrente("3289", "2000", cli1);
+        ContaCorrente conta02 = new ContaCorrente("0010", "4324", cli1);
 
     @DisplayName("Teste para verificar se o deposito foi realizado com sucesso")
     @Test
     void verificaSeDepositoFoiRealizado() throws SaldoInsuficienteException {
-        conta01.depositar(BigDecimal.valueOf(300));
-        BigDecimal expectativa = new BigDecimal(800);
+        conta01.depositar(BigDecimal.valueOf(800.0));
+        BigDecimal expectativa = new BigDecimal("800.0");
         BigDecimal resultado = conta01.getSaldoDaConta();
 
         Assertions.assertEquals(expectativa, resultado);
@@ -29,9 +27,10 @@ public class ContaCorrenteTest {
 
     @DisplayName("Teste para verificar se o usuário realizou o saque com sucesso")
     @Test
-    void verificaSeOSaqueFoiRealizado() {
+    void verificaSeOSaqueFoiRealizado() throws SaldoInsuficienteException {
+        conta01.depositar(BigDecimal.valueOf(500.0));
         conta01.sacar(BigDecimal.valueOf(100));
-        BigDecimal expectativa = new BigDecimal(400);
+        BigDecimal expectativa = new BigDecimal("400.0");
         BigDecimal resultado = conta01.getSaldoDaConta();
 
         Assertions.assertEquals(expectativa, resultado);
@@ -49,10 +48,11 @@ public class ContaCorrenteTest {
 
     @DisplayName("Teste para verificar se o valor esta sendo descontado no saldo da conta origem")
     @Test
-    void verificaSeOValorFoiRetiradoDaConta(){
-
+    void verificaSeOValorFoiRetiradoDaConta() throws SaldoInsuficienteException {
+        conta01.depositar(BigDecimal.valueOf(500));
+        conta02.depositar(BigDecimal.valueOf(500));
         conta01.transferir(BigDecimal.valueOf(200), conta02);
-        BigDecimal expectativa = new BigDecimal(300);
+        BigDecimal expectativa = new BigDecimal("300.0");
         BigDecimal resultado = conta01.getSaldoDaConta();
 
         Assertions.assertEquals(expectativa, resultado);
@@ -60,10 +60,11 @@ public class ContaCorrenteTest {
 
     @DisplayName("Teste para verificar se o valor esta sendo depositado no saldo da conta destino")
     @Test
-    void verificaSeOValorFoiDepositadoNaConta(){
-
+    void verificaSeOValorFoiDepositadoNaConta() throws SaldoInsuficienteException {
+        conta01.depositar(BigDecimal.valueOf(500));
+        conta02.depositar(BigDecimal.valueOf(500));
         conta01.transferir(BigDecimal.valueOf(200), conta02);
-        BigDecimal expectativa = new BigDecimal(700);
+        BigDecimal expectativa = new BigDecimal("700.0");
         BigDecimal resultado = conta02.getSaldoDaConta();
 
         Assertions.assertEquals(expectativa, resultado);
@@ -82,7 +83,7 @@ public class ContaCorrenteTest {
     @DisplayName("Teste para verificar se conta foi cancelada com sucesso")
     @Test
     void verificaSeAContaFoiCancelada() {
-        conta01.cancelarConta(true, "justificativa teste");
+        conta01.cancelarConta( "justificativa teste");
         Boolean expectativa = false;
         Boolean resultado = conta01.getStatusDaConta();
 
@@ -95,7 +96,7 @@ public class ContaCorrenteTest {
         String expectativa = "Segunda Data Menor que a Primeira.";
         ValidacaoDataException resultado = Assertions.assertThrows(ValidacaoDataException.class,
                 () -> conta01.imprimirExtrato(LocalDate.of(2021, 10, 10),
-                        LocalDate.of(2021, 10, 10)));
+                        LocalDate.of(2021, 10, 9)));
 
         Assertions.assertEquals(expectativa, resultado.getMessage());
     }

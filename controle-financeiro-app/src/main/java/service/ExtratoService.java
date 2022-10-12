@@ -84,7 +84,7 @@ public class ExtratoService {
 		String cabeçalho = "=============\nExtrato Bancário\n";
 			DateTimeFormatter dataE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		for(Extrato e : this.extrato){
-			if(!e.data.isBefore(data1) && e.data.isAfter(data2)) {
+			if((!e.data.isBefore(data1) || e.data.isEqual(data1)) && (!e.data.isAfter(data2) || e.data.isEqual(data2))) {
 				String corpo = "Data: " + e.data.format(dataE) + "\nOperacao: " + e.operacao + "\n"
 						+ (e.operacao.equals("TRANSFERÊNCIA") ? "Conta Transferência: "
 						+ e.contaDestino + "\nValor: " + e.saldoDaConta + "\n" : "Valor: "

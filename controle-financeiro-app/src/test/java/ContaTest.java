@@ -1,6 +1,7 @@
 import exception.SaldoInsuficienteException;
 import exception.ValidacaoDataException;
 import model.Cliente;
+import model.Conta;
 import model.ContaCorrente;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -96,6 +97,16 @@ public class ContaTest {
         conta01.cancelarConta("justificativa teste");
         LocalDate dataExpectativa = LocalDate.now();
         LocalDate dataResultado = conta01.getDataCancelamento();
+
+        Assertions.assertEquals(dataExpectativa, dataResultado);
+    }
+
+    @DisplayName("Teste para verificar a data de criação da Conta")
+    @Test
+    void verificaDataDeCriacaoDaConta() {
+
+        LocalDate dataExpectativa = LocalDate.now();
+        LocalDate dataResultado = conta01.getDataAbertura();
 
         Assertions.assertEquals(dataExpectativa, dataResultado);
     }

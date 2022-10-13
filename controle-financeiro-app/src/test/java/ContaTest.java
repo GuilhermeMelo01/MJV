@@ -83,7 +83,7 @@ public class ContaTest {
     @DisplayName("Teste para verificar se conta foi cancelada com sucesso")
     @Test
     void verificaSeAContaFoiCancelada() {
-        conta01.cancelarConta( "justificativa teste");
+        conta01.cancelarConta("justificativa teste");
         Boolean expectativa = false;
         Boolean resultado = conta01.getStatusDaConta();
 

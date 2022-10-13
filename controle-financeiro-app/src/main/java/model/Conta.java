@@ -8,11 +8,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public abstract class Conta {
+
     protected final String numeroConta;
     protected final String numeroAgencia;
     protected BigDecimal saldoDaConta;
     protected Boolean statusDaConta;
     protected Cliente cliente;
+    protected LocalDate dataAbertura;
+    protected LocalDate dataCancelamento;
 
     public Conta(String numeroConta, String numeroAgencia, Cliente cliente) {
         this.numeroConta = numeroConta;
@@ -20,6 +23,7 @@ public abstract class Conta {
         this.cliente = cliente;
         this.saldoDaConta = BigDecimal.valueOf(0.0);
         this.statusDaConta = true;
+        this.dataAbertura = LocalDate.now();
     }
 
     public String getNumeroConta() {
@@ -79,6 +83,7 @@ public abstract class Conta {
     public void cancelarConta(String justificativa) {
         if (!justificativa.isBlank() && this.statusDaConta) {
             this.statusDaConta = false;
+            this.dataCancelamento = LocalDate.now();
             Extrato ext = new Extrato("CANCELAMENTO", BigDecimal.valueOf(0), getStatusDaConta());
             ext.gravarDados(ext);
         } else if (justificativa.isBlank()) {

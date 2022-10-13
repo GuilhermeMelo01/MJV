@@ -90,6 +90,16 @@ public class ContaTest {
         Assertions.assertEquals(expectativa, resultado);
     }
 
+    @DisplayName("Teste para verificar a data que a conta foi cancelada")
+    @Test
+    void verificaDataDeCancelamentoDaConta() {
+        conta01.cancelarConta("justificativa teste");
+        LocalDate dataExpectativa = LocalDate.now();
+        LocalDate dataResultado = conta01.getDataCancelamento();
+
+        Assertions.assertEquals(dataExpectativa, dataResultado);
+    }
+
     @DisplayName("Teste para verificar se a exception de data foi lançada")
     @Test
     void verificaDataException() {

@@ -50,6 +50,14 @@ public abstract class Conta {
         this.statusDaConta = statusDaConta;
     }
 
+    public LocalDate getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public LocalDate getDataCancelamento() {
+        return dataCancelamento;
+    }
+
     public void depositar(BigDecimal deposito) throws SaldoInsuficienteException {
         if (deposito.compareTo(BigDecimal.ZERO) < 0) {
             throw new SaldoInsuficienteException("Saldo ou Depósito não pode ser menor que 0");

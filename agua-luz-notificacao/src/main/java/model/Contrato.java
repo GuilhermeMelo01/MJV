@@ -1,7 +1,7 @@
 package model;
 
-import Enums.Notificacao;
-import Enums.Servico;
+import enums.Notificacao;
+import enums.Servico;
 
 import java.time.LocalDateTime;
 

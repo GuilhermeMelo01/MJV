@@ -23,7 +23,8 @@ public class CadastroService {
                 + " em sua residência localizada no endereço abaixo:");
     }
 
-    public static void geradorArquivoPosicional(){
-
+    public static void geradorArquivoPosicional(Cadastro cadastro){
+        Cliente cliente = cadastro.getCliente();
+        Contrato contrato = cadastro.getContrato();
     }
 }

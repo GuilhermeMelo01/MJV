@@ -1,18 +1,22 @@
 package model;
 
+import enums.Pais;
+
 public class Enderenco {
     private String logradouro;
     private String complemento;
     private String bairro;
-    private String Cidade;
-    private String Cep;
+    private String cidade;
+    private String cep;
+    private Pais pais;
 
-    public Enderenco(String logradouro, String complemento, String bairro, String cidade, String cep) {
+    public Enderenco(String logradouro, String complemento, String bairro, String cidade, String cep, Pais pais) {
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.bairro = bairro;
-        Cidade = cidade;
-        Cep = cep;
+        this.cidade = cidade;
+        this.cep = cep;
+        this.pais = pais;
     }
 
     public String getLogradouro() {
@@ -40,30 +44,26 @@ public class Enderenco {
     }
 
     public String getCidade() {
-        return Cidade;
+        return cidade;
     }
 
     public void setCidade(String cidade) {
-        Cidade = cidade;
+        this.cidade = cidade;
     }
 
     public String getCep() {
-        return Cep;
+        return cep;
     }
 
     public void setCep(String cep) {
-        Cep = cep;
+        this.cep = cep;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Enderenco{");
-        sb.append("logradouro='").append(logradouro).append('\'');
-        sb.append(", complemento='").append(complemento).append('\'');
-        sb.append(", bairro='").append(bairro).append('\'');
-        sb.append(", Cidade='").append(Cidade).append('\'');
-        sb.append(", Cep='").append(Cep).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 }

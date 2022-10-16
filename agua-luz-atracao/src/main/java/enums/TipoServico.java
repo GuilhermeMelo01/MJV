@@ -3,19 +3,19 @@ package enums;
 import java.math.BigDecimal;
 
 public enum TipoServico {
-    AGUA("Água", BigDecimal.valueOf(137.21)),
-    ENERGIA("Energia", BigDecimal.valueOf(132.15));
+    AGUA("A", BigDecimal.valueOf(137.21)),
+    ENERGIA("L", BigDecimal.valueOf(132.15));
 
-    private final String nome;
+    private final String sigla;
     private final BigDecimal valor;
 
-    TipoServico(String nome, BigDecimal valor) {
-        this.nome = nome;
+    TipoServico(String sigla, BigDecimal valor) {
+        this.sigla = sigla;
         this.valor = valor;
     }
 
-    public String getNome() {
-        return nome;
+    public String getSigla() {
+        return sigla;
     }
 
     public BigDecimal getValor() {

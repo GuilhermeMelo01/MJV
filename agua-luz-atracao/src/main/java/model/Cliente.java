@@ -3,13 +3,11 @@ package model;
 public class Cliente {
     private String nome;
     private String cpf;
-    private Contrato contrato;
     private Enderenco enderenco;
 
-    public Cliente(String nome, String cpf, Contrato contrato, Enderenco enderenco) {
+    public Cliente(String nome, String cpf, Enderenco enderenco) {
         this.nome = nome;
         this.cpf = cpf;
-        this.contrato = contrato;
         this.enderenco = enderenco;
     }
 
@@ -25,14 +23,6 @@ public class Cliente {
         return cpf;
     }
 
-    public Contrato getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
-    }
-
     public Enderenco getEnderenco() {
         return enderenco;
     }
@@ -46,7 +36,6 @@ public class Cliente {
         final StringBuilder sb = new StringBuilder("Cliente{");
         sb.append("nome='").append(nome).append('\'');
         sb.append(", cpf='").append(cpf).append('\'');
-        sb.append(", contrato=").append(contrato);
         sb.append(", enderenco=").append(enderenco);
         sb.append('}');
         return sb.toString();

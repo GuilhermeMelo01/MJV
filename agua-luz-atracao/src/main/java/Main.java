@@ -12,6 +12,6 @@ public class Main {
                 "22002");
         Contrato contrato = new Contrato("9403294432", LocalDateTime.now(), TipoServico.AGUA);
         Cliente cliente = new Cliente("Gui", "0923042423", contrato, e);
-        CadastroService.cadastrar(cliente);
+        CadastroService.mensagem(cliente);
     }
 }

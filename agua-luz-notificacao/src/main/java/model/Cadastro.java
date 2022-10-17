@@ -29,4 +29,13 @@ public class Cadastro {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+    @Override
+    public String toString() {
+        return "Cadastro{" +
+                "cpf='" + cpf + '\'' +
+                ", nome='" + nome + '\'' +
+                ", endereco=" + endereco +
+                '}';
+    }
 }

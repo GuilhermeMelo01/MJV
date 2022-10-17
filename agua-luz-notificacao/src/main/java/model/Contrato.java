@@ -1,18 +1,20 @@
 package model;
 
 import enums.Notificacao;
-import enums.Servico;
+import enums.TipoServico;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Contrato {
 
     private Long protocolo;
     private LocalDateTime dataHora;
-    private Servico sevico;
+    private BigDecimal valor;
+    private TipoServico sevico;
     private Endereco endereco;
     private Notificacao notificacao;
-    private Cadastro cadastro;
+    private Cadastro cadastroCliente;
 
     public Long getProtocolo() {
         return protocolo;
@@ -30,11 +32,19 @@ public class Contrato {
         this.dataHora = dataHora;
     }
 
-    public Servico getSevico() {
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public TipoServico getSevico() {
         return sevico;
     }
 
-    public void setSevico(Servico sevico) {
+    public void setSevico(TipoServico sevico) {
         this.sevico = sevico;
     }
 
@@ -54,11 +64,11 @@ public class Contrato {
         this.notificacao = notificacao;
     }
 
-    public Cadastro getCadastro() {
-        return cadastro;
+    public Cadastro getCadastroCliente() {
+        return cadastroCliente;
     }
 
-    public void setCadastro(Cadastro cadastro) {
-        this.cadastro = cadastro;
+    public void setCadastroCliente(Cadastro cadastroCliente) {
+        this.cadastroCliente = cadastroCliente;
     }
 }

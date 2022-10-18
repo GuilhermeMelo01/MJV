@@ -3,6 +3,7 @@ package model;
 public class Endereco {
 
     private String logradouro;
+    private String numero;
     private String complemento;
     private String bairro;
     private String cidade;
@@ -16,6 +17,14 @@ public class Endereco {
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getComplemento() {

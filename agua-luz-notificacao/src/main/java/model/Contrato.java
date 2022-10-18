@@ -11,7 +11,7 @@ public class Contrato {
     private Long protocolo;
     private LocalDateTime dataHora;
     private BigDecimal valor;
-    private TipoServico sevico;
+    private TipoServico servico;
     private Endereco endereco;
     private Notificacao notificacao;
     private Cadastro cadastroCliente;
@@ -40,12 +40,12 @@ public class Contrato {
         this.valor = valor;
     }
 
-    public TipoServico getSevico() {
-        return sevico;
+    public TipoServico getServico() {
+        return servico;
     }
 
-    public void setSevico(TipoServico sevico) {
-        this.sevico = sevico;
+    public void setServico(TipoServico servico) {
+        this.servico = servico;
     }
 
     public Endereco getEndereco() {

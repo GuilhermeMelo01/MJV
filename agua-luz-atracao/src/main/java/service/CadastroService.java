@@ -111,7 +111,7 @@ public class CadastroService {
 
         String cpf = contrato.getCliente().getCpf();
         int minCpf = Math.min(11, cpf.length());
-        cpf = cpf.replaceAll("\\.", "");
+        cpf = cpf.substring(0, minCpf).replaceAll("\\.", "");
 
         String nome = contrato.getCliente().getNome();
         int minNome = Math.min(30, nome.length());

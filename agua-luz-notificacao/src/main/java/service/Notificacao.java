@@ -69,7 +69,9 @@ public class Notificacao {
                     .append(uf).append("\nCep: ").append(cep).append("\n");
 
             String mensagemMontada = stringBuilder.toString().replaceAll("#", "");
-            criarArquivoCPF(cpf, mensagemMontada);
+
+            criarArquivoApartiDoCPF(cpf, mensagemMontada);
+
             System.out.println(mensagemMontada);
         }
     }
@@ -95,7 +97,7 @@ public class Notificacao {
         return contratoList;
     }
 
-    public void criarArquivoCPF(String cpf, String mensagem) throws IOException {
+    public void criarArquivoApartiDoCPF(String cpf, String mensagem) throws IOException {
         String nomeArquivo=String.format("contrato-cpf-%s.txt", cpf);
         File diretorio = new File("C:\\Users\\User\\MJV\\agua-luz-output");
         if (!diretorio.exists()) {

@@ -41,14 +41,4 @@ public class Contrato {
     public void setTipoServico(TipoServico tipoServico) {
         this.tipoServico = tipoServico;
     }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Contrato{");
-        sb.append("protocolo='").append(protocolo).append('\'');
-        sb.append(", agendamento=").append(agendamento);
-        sb.append(", tipoServico=").append(tipoServico);
-        sb.append('}');
-        return sb.toString();
-    }
 }

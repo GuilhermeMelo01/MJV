@@ -30,14 +30,4 @@ public class Cliente {
     public void setEnderenco(Enderenco enderenco) {
         this.enderenco = enderenco;
     }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Cliente{");
-        sb.append("nome='").append(nome).append('\'');
-        sb.append(", cpf='").append(cpf).append('\'');
-        sb.append(", enderenco=").append(enderenco);
-        sb.append('}');
-        return sb.toString();
-    }
 }

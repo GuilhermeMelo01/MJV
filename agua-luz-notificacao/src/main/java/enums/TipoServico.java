@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public enum TipoServico {
 
-    AGUA("Água", BigDecimal.valueOf(137.21)),
-    LUZ("Luz", BigDecimal.valueOf(132.15));
+    AGUA("A", BigDecimal.valueOf(137.21)),
+    LUZ("L", BigDecimal.valueOf(132.15));
 
     private final String sigla;
     private final BigDecimal valor;

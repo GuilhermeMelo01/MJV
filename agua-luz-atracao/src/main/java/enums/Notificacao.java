@@ -1,7 +1,5 @@
 package enums;
 
-import java.math.BigDecimal;
-
 public enum Notificacao {
 
     SMS("S"),

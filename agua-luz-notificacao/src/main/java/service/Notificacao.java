@@ -1,5 +1,6 @@
 package service;
 
+import enums.TipoServico;
 import util.FormatadorCEP;
 import util.FormatadorCPF;
 
@@ -28,23 +29,34 @@ public class Notificacao {
             String protocolo = contrato.get(i).substring(129, 139);
             String data = contrato.get(i).substring(139, 147);
             String hora = contrato.get(i).substring(147, 151);
+
             String servico = contrato.get(i).substring(151, 152); // - 1
+            if (servico.equals("A")){
+                servico = "Água";
+            }else{
+                servico = "Luz";
+            }
+
             String valor = contrato.get(i).substring(152, 160).replaceAll("0", ""); // - valor
-//            String numero = contrato.get(i).substring(138, 146);
+            String valorPosVirgula = valor.substring(3, 5);
+            String valorPreVirgula = valor.substring(0, 3);
+            valor = valorPreVirgula.concat(",").concat(valorPosVirgula);
+
+            //            String numero = contrato.get(i).substring(138, 146);
 
             cpf = FormatadorCPF.formatadorCPF(cpf);
 
-            String ano = data.substring(0,4);
-            String mes = data.substring(4,6);
-            String dia = data.substring(6,8);
+            String ano = data.substring(0, 4);
+            String mes = data.substring(4, 6);
+            String dia = data.substring(6, 8);
             data = ano.concat("/").concat(mes).concat("/").concat(dia);
 
-            String horas = hora.substring(0,2);
-            String minuto = hora.substring(2,4);
+            String horas = hora.substring(0, 2);
+            String minuto = hora.substring(2, 4);
 
             hora = horas.concat(":").concat(minuto);
 
-            cep =  FormatadorCEP.formatadorCEP(cep);
+            cep = FormatadorCEP.formatadorCEP(cep);
 
 
             stringBuilder.append("Senhor(a) ").append(nome).append(" cpf de número ").append(cpf).append(",")
@@ -53,20 +65,20 @@ public class Notificacao {
                     .append(hora).append("h a instalação do serviço de ").append(servico).append(" com taxa de valor R$ ")
                     .append(valor).append(" em sua residência localizada no endereço abaixo:\n\n")
                     .append("Logradouro: ")
-                    .append(logradouro).append(", ")
-                    .append("Complemento: ")
-                    .append(complemento).append("\n").append("Bairro: ")
-                    .append(bairro).append("\n").append("Cidade: ")
+                    .append(logradouro)
+                    .append("\nComplemento: ")
+                    .append(complemento).append("\nBairro: ")
+                    .append(bairro).append("\nCidade: ")
                     .append(cidade).append("/")
-                    .append(uf).append("\n").append("Cep: ").append(cep).append("\n");
+                    .append(uf).append("\nCep: ").append(cep).append("\n");
 
-            String stringTest = stringBuilder.toString().replaceAll("#","");
+            String stringTest = stringBuilder.toString().replaceAll("#", "");
             System.out.println(stringTest);
         }
     }
 
     public ArrayList<String> ler() {
-        Path arquivo = Paths.get("C:\\Users\\User\\MJV\\agua-luz-output.txt");
+        Path arquivo = Paths.get("C:\\Users\\User\\MJV\\agua-luz-output\\agua-luz-output.txt");
 
         ArrayList<String> contratoList = null;
         try {

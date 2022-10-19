@@ -10,15 +10,18 @@ public class Contrato {
     private LocalDateTime agendamento;
     private TipoServico tipoServico;
     private Notificacao notificacao;
+    private Cliente cliente;
 
     public Contrato() {
     }
 
-    public Contrato(String protocolo, LocalDateTime agendamento, TipoServico tipoServico, Notificacao notificacao) {
+    public Contrato(String protocolo, LocalDateTime agendamento, TipoServico tipoServico,
+                    Notificacao notificacao, Cliente cliente) {
         this.protocolo = protocolo;
         this.agendamento = agendamento;
         this.tipoServico = tipoServico;
         this.notificacao = notificacao;
+        this.cliente = cliente;
     }
 
     public String getProtocolo() {
@@ -51,5 +54,13 @@ public class Contrato {
 
     public void setNotificacao(Notificacao notificacao) {
         this.notificacao = notificacao;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

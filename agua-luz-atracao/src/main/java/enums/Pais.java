@@ -3,8 +3,8 @@ package enums;
 public enum Pais {
 
     BR("BR"),
-    EUA("US"),
-    FRA("FR");
+    US("US"),
+    FR("FR");
 
     private final String sigla;
 

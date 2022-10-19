@@ -4,8 +4,6 @@ import model.Cliente;
 import model.Contrato;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -16,7 +14,7 @@ public class CadastroService {
 
         String cpf = cliente.getCpf();
         int minCpf = Math.min(11, cpf.length());
-        while (minCpf < 30) {
+        while (minCpf < 11) {
             cpf = cpf.concat("#");
             minCpf++;
         }
@@ -80,7 +78,7 @@ public class CadastroService {
 
         String siglaPais = cliente.getEnderenco().getPais().getSigla();
 
-        int longProtocolo = Integer.parseInt(contrato.getProtocolo());
+        long longProtocolo = Long.parseLong(contrato.getProtocolo());
         String protocolo = String.format("%010d", longProtocolo);
 
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/MM/dd", Locale.ENGLISH);
@@ -107,7 +105,7 @@ public class CadastroService {
         System.out.println(sb);
 
         String nomeArquivo = "agua-luz-contratos.txt";
-        File diretorio = new File("C:\\Users\\warlo\\Java\\Projects\\mjv_school_java\\aula_git\\agua-luz-output");
+        File diretorio = new File("C:\\Users\\User\\MJV\\agua-luz-output");
         if (!diretorio.exists()) {
             diretorio.mkdirs();
         }
@@ -158,7 +156,7 @@ public class CadastroService {
 
         String siglaPais = cliente.getEnderenco().getPais().getSigla();
 
-        int longProtocolo = Integer.parseInt(contrato.getProtocolo());
+        Long longProtocolo = Long.parseLong(contrato.getProtocolo());
         String protocolo = String.format("%010d", longProtocolo);
 
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/MM/dd", Locale.ENGLISH);
@@ -188,7 +186,7 @@ public class CadastroService {
         System.out.println(sb);
 
         String nomeArquivo = "agua-luz-contratos.csv";
-        File diretorio = new File("C:\\Users\\warlo\\Java\\Projects\\mjv_school_java\\aula_git\\agua-luz-output");
+        File diretorio = new File("C:\\Users\\User\\MJV\\agua-luz-output");
         if (!diretorio.exists()) {
             diretorio.mkdirs();
         }

@@ -1,23 +1,12 @@
 package service;
 
-import model.Contrato;
 import util.FormatadorCEP;
 import util.FormatadorCPF;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.lang.reflect.Array;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class Notificacao {
 
@@ -27,20 +16,21 @@ public class Notificacao {
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            String nome = contrato.get(i).substring(30, 61);
-            String cpf = contrato.get(i).substring(0, 11);
-            String protocolo = contrato.get(i).substring(148, 158);
-            String data = contrato.get(i).substring(158, 166);
-            String hora = contrato.get(i).substring(166, 170);
-            String servico = contrato.get(i).substring(171, 171);
-            String valor = contrato.get(i).substring(172, 176);
-            String cep = contrato.get(i).substring(138, 146);
-            String logradouro = contrato.get(i).substring(138, 146);
-            String numero = contrato.get(i).substring(138, 146);
-            String complemento = contrato.get(i).substring(138, 146);
-            String bairro = contrato.get(i).substring(138, 146);
-            String cidade = contrato.get(i).substring(138, 146);
-            String uf = contrato.get(i).substring(138, 146);
+            String cpf = contrato.get(i).substring(0, 11); //1
+            String nome = contrato.get(i).substring(11, 42); //2
+            String logradouro = contrato.get(i).substring(42, 62); //3
+            String complemento = contrato.get(i).substring(62, 72); //4
+            String bairro = contrato.get(i).substring(72, 87); //5
+            String cidade = contrato.get(i).substring(87, 117); //6
+            String uf = contrato.get(i).substring(117, 119);
+            String cep = contrato.get(i).substring(119, 127);
+            //sigla - 2 129
+            String protocolo = contrato.get(i).substring(129, 139);
+            String data = contrato.get(i).substring(139, 147);
+            String hora = contrato.get(i).substring(147, 151);
+            String servico = contrato.get(i).substring(151, 152); // - 1
+            String valor = contrato.get(i).substring(152, 160).replaceAll("0", ""); // - valor
+//            String numero = contrato.get(i).substring(138, 146);
 
             cpf = FormatadorCPF.formatadorCPF(cpf);
 
@@ -64,11 +54,11 @@ public class Notificacao {
                     .append(valor).append(" em sua residência localizada no endereço abaixo:\n\n")
                     .append("Logradouro: ")
                     .append(logradouro).append(", ")
-                    .append(numero).append("\n").append("Complemento: ")
+                    .append("Complemento: ")
                     .append(complemento).append("\n").append("Bairro: ")
                     .append(bairro).append("\n").append("Cidade: ")
                     .append(cidade).append("/")
-                    .append(uf).append("\n").append("Cep: ").append(cep);
+                    .append(uf).append("\n").append("Cep: ").append(cep).append("\n");
 
             String stringTest = stringBuilder.toString().replaceAll("#","");
             System.out.println(stringTest);
@@ -76,7 +66,7 @@ public class Notificacao {
     }
 
     public ArrayList<String> ler() {
-        Path arquivo = Paths.get("C:\\Users\\warlo\\Java\\Projects\\mjv_school_java\\aula_git\\agua-luz-atracao\\agua-luz-output.txt");
+        Path arquivo = Paths.get("C:\\Users\\User\\MJV\\agua-luz-output.txt");
 
         ArrayList<String> contratoList = null;
         try {

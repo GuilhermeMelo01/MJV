@@ -3,8 +3,7 @@ package service;
 import model.Cliente;
 import model.Contrato;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.format.DateTimeFormatter;
@@ -103,20 +102,20 @@ public class CadastroService {
         sb.append(cpf).append(nome).append(logradouro).append(complemento).append(bairro)
                 .append(cidade).append(uf).append(cep).append(siglaPais).append(protocolo)
                 .append(dataFormatada).append(horaFormatada).append(siglaTipoServico)
-                .append(valorTipoServico).append(siglaNotificacao).append("\n");
+                .append(valorTipoServico).append(siglaNotificacao).append("*\n");
 
         System.out.println(sb);
 
         String nomeArquivo = "agua-luz-contratos.txt";
-        File diretorio = new File("C:\\Users\\User\\MJV\\agua-luz-output");
+        File diretorio = new File("C:\\Users\\warlo\\Java\\Projects\\mjv_school_java\\aula_git\\agua-luz-output");
         if (!diretorio.exists()) {
             diretorio.mkdirs();
         }
 
-        File arquivo = new File(diretorio, nomeArquivo);
-        Path path = arquivo.toPath();
         try {
-            Files.writeString(path, sb.toString());
+            Writer path = new BufferedWriter(new FileWriter("agua-luz-output.txt", true));
+            path.append(sb);
+            path.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -188,19 +187,18 @@ public class CadastroService {
 
         System.out.println(sb);
 
-        String nomeArquivo = "agua-luz-contratos.txt";
-        File diretorio = new File("C:\\Users\\User\\MJV\\agua-luz-output");
+        String nomeArquivo = "agua-luz-contratos.csv";
+        File diretorio = new File("C:\\Users\\warlo\\Java\\Projects\\mjv_school_java\\aula_git\\agua-luz-output");
         if (!diretorio.exists()) {
             diretorio.mkdirs();
         }
 
-        File arquivo = new File(diretorio, nomeArquivo);
-        Path path = arquivo.toPath();
         try {
-            Files.writeString(path, sb.toString());
+            Writer path = new BufferedWriter(new FileWriter("agua-luz-output.csv", true));
+            path.append(sb);
+            path.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

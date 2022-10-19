@@ -8,6 +8,7 @@ import model.Endereco;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 
 public class DBService {
     public static void main(String[] args) {
@@ -35,7 +36,9 @@ public class DBService {
         endereco.setComplemento("701");
 
         Notificacao nt = new Notificacao();
-        nt.notificar(contrato);
-
+        ArrayList<String> test = null;
+        test = nt.ler();
+        nt.notificar(test);
+        nt.ler();
     }
 }

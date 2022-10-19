@@ -16,5 +16,9 @@ public class Main {
         Contrato contrato = new Contrato("4832748", LocalDateTime.now(), TipoServico.AGUA, Notificacao.SMS);
         CadastroService.geradorArquivoPosicional(cliente, contrato);
         CadastroService.geradorArquivoCSV(cliente, contrato);
+
+        CadastroService.geradorArquivoPosicional(cliente, contrato);
+
     }
+
 }

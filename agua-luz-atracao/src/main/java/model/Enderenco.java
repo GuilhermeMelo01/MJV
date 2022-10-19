@@ -8,14 +8,16 @@ public class Enderenco {
     private String bairro;
     private String cidade;
     private String cep;
+    private String uf;
     private Pais pais;
 
-    public Enderenco(String logradouro, String complemento, String bairro, String cidade, String cep, Pais pais) {
+    public Enderenco(String logradouro, String complemento, String bairro, String cidade, String cep, String uf, Pais pais) {
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.bairro = bairro;
         this.cidade = cidade;
         this.cep = cep;
+        this.uf = uf;
         this.pais = pais;
     }
 
@@ -57,6 +59,14 @@ public class Enderenco {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public Pais getPais() {

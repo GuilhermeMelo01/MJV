@@ -11,6 +11,9 @@ public class Contrato {
     private TipoServico tipoServico;
     private Notificacao notificacao;
 
+    public Contrato() {
+    }
+
     public Contrato(String protocolo, LocalDateTime agendamento, TipoServico tipoServico, Notificacao notificacao) {
         this.protocolo = protocolo;
         this.agendamento = agendamento;
@@ -40,5 +43,13 @@ public class Contrato {
 
     public void setTipoServico(TipoServico tipoServico) {
         this.tipoServico = tipoServico;
+    }
+
+    public Notificacao getNotificacao() {
+        return notificacao;
+    }
+
+    public void setNotificacao(Notificacao notificacao) {
+        this.notificacao = notificacao;
     }
 }

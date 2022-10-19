@@ -1,6 +1,6 @@
 package model;
 
-public class Cadastro {
+public class Cliente {
 
     private String cpf;
     private String nome;
@@ -30,12 +30,4 @@ public class Cadastro {
         this.endereco = endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Cadastro{" +
-                "cpf='" + cpf + '\'' +
-                ", nome='" + nome + '\'' +
-                ", endereco=" + endereco +
-                '}';
-    }
 }

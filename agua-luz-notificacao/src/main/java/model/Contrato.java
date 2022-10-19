@@ -14,7 +14,7 @@ public class Contrato {
     private TipoServico servico;
     private Endereco endereco;
     private Notificacao notificacao;
-    private Cadastro cadastroCliente;
+    private Cliente cliente;
 
     public Long getProtocolo() {
         return protocolo;
@@ -64,11 +64,11 @@ public class Contrato {
         this.notificacao = notificacao;
     }
 
-    public Cadastro getCadastroCliente() {
-        return cadastroCliente;
+    public Cliente getCadastroCliente() {
+        return cliente;
     }
 
-    public void setCadastroCliente(Cadastro cadastroCliente) {
-        this.cadastroCliente = cadastroCliente;
+    public void setCadastroCliente(Cliente clienteCliente) {
+        this.cliente = clienteCliente;
     }
 }

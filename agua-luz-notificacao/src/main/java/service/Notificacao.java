@@ -1,6 +1,5 @@
 package service;
 
-import enums.TipoServico;
 import util.FormatadorCEP;
 import util.FormatadorCPF;
 
@@ -25,24 +24,22 @@ public class Notificacao {
             String cidade = contrato.get(i).substring(87, 117); //6
             String uf = contrato.get(i).substring(117, 119);
             String cep = contrato.get(i).substring(119, 127);
-            //sigla - 2 129
+            //sigla - 2
             String protocolo = contrato.get(i).substring(129, 139);
             String data = contrato.get(i).substring(139, 147);
             String hora = contrato.get(i).substring(147, 151);
 
-            String servico = contrato.get(i).substring(151, 152); // - 1
+            String servico = contrato.get(i).substring(151, 152);
             if (servico.equals("A")){
                 servico = "Água";
             }else{
                 servico = "Luz";
             }
 
-            String valor = contrato.get(i).substring(152, 160).replaceAll("0", ""); // - valor
+            String valor = contrato.get(i).substring(152, 160).replaceAll("0", "");
             String valorPosVirgula = valor.substring(3, 5);
             String valorPreVirgula = valor.substring(0, 3);
             valor = valorPreVirgula.concat(",").concat(valorPosVirgula);
-
-            //            String numero = contrato.get(i).substring(138, 146);
 
             cpf = FormatadorCPF.formatadorCPF(cpf);
 
@@ -78,7 +75,7 @@ public class Notificacao {
     }
 
     public ArrayList<String> ler() {
-        Path arquivo = Paths.get("C:\\Users\\User\\MJV\\agua-luz-output\\agua-luz-output.txt");
+        Path arquivo = Paths.get("C:\\Users\\User\\MJV\\agua-luz-output\\agua-luz-contratos.txt");
 
         ArrayList<String> contratoList = null;
         try {

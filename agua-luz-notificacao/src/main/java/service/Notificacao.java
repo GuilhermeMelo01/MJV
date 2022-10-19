@@ -3,6 +3,7 @@ package service;
 import util.FormatadorCEP;
 import util.FormatadorCPF;
 
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,21 +11,20 @@ import java.util.ArrayList;
 
 public class Notificacao {
 
-    public void notificar(ArrayList<String> contrato) {
+    public void notificar(ArrayList<String> contrato) throws IOException {
 
         for (int i = 0; i < contrato.toArray().length; i++) {
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            String cpf = contrato.get(i).substring(0, 11); //1
-            String nome = contrato.get(i).substring(11, 42); //2
-            String logradouro = contrato.get(i).substring(42, 62); //3
-            String complemento = contrato.get(i).substring(62, 72); //4
-            String bairro = contrato.get(i).substring(72, 87); //5
-            String cidade = contrato.get(i).substring(87, 117); //6
+            String cpf = contrato.get(i).substring(0, 11);
+            String nome = contrato.get(i).substring(11, 42);
+            String logradouro = contrato.get(i).substring(42, 62);
+            String complemento = contrato.get(i).substring(62, 72);
+            String bairro = contrato.get(i).substring(72, 87);
+            String cidade = contrato.get(i).substring(87, 117);
             String uf = contrato.get(i).substring(117, 119);
             String cep = contrato.get(i).substring(119, 127);
-            //sigla - 2
             String protocolo = contrato.get(i).substring(129, 139);
             String data = contrato.get(i).substring(139, 147);
             String hora = contrato.get(i).substring(147, 151);
@@ -55,7 +55,6 @@ public class Notificacao {
 
             cep = FormatadorCEP.formatadorCEP(cep);
 
-
             stringBuilder.append("Senhor(a) ").append(nome).append(" cpf de número ").append(cpf).append(",")
                     .append(" informamos que conforme contrato com protocolo de número ").append(protocolo)
                     .append("\nestá ").append("agendado para a data/hora ").append(data).append(" às ")
@@ -69,8 +68,9 @@ public class Notificacao {
                     .append(cidade).append("/")
                     .append(uf).append("\nCep: ").append(cep).append("\n");
 
-            String stringTest = stringBuilder.toString().replaceAll("#", "");
-            System.out.println(stringTest);
+            String mensagemMontada = stringBuilder.toString().replaceAll("#", "");
+            criarArquivoCPF(cpf, mensagemMontada);
+            System.out.println(mensagemMontada);
         }
     }
 
@@ -93,5 +93,24 @@ public class Notificacao {
             System.err.println("Erro: " + ex.toString());
         }
         return contratoList;
+    }
+
+    public void criarArquivoCPF(String cpf, String mensagem) throws IOException {
+        String nomeArquivo=String.format("contrato-cpf-%s.txt", cpf);
+        File diretorio = new File("C:\\Users\\User\\MJV\\agua-luz-output");
+        if (!diretorio.exists()) {
+            diretorio.mkdirs();
+        }
+
+        File arquivo = new File(diretorio, nomeArquivo);
+        arquivo.createNewFile();
+
+        try {
+            Writer path = new BufferedWriter(new FileWriter(arquivo, true));
+            path.append(mensagem);
+            path.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

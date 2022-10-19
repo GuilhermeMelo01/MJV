@@ -12,9 +12,6 @@ public class Contrato {
     private Notificacao notificacao;
     private Cliente cliente;
 
-    public Contrato() {
-    }
-
     public Contrato(String protocolo, LocalDateTime agendamento, TipoServico tipoServico,
                     Notificacao notificacao, Cliente cliente) {
         this.protocolo = protocolo;

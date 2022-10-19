@@ -12,9 +12,12 @@ import java.time.LocalDateTime;
 public class Main {
     public static void main(String[] args) throws IOException {
         Enderenco enderenco = new Enderenco("Rua celso Ribeiro", "Shopping",
-                "Sao caetano", "Fortaleza","93829042", "CE", Pais.FR);
-        Cliente cliente = new Cliente("Guilherme Tavares", "09234924546", enderenco);
-        Contrato contrato = new Contrato("4234832748", LocalDateTime.now(), TipoServico.AGUA, Notificacao.SMS, cliente);
+                "São Jorge", "Fortaleza", "93829042", "CE", Pais.BR);
+
+        Cliente cliente = new Cliente("Marcelo Tavares", "09238434546", enderenco);
+        Contrato contrato = new Contrato("4234832748", LocalDateTime.now(),
+                TipoServico.AGUA, Notificacao.SMS, cliente);
+
         CadastroService.geradorArquivoPosicional(contrato);
         CadastroService.geradorArquivoCSV(contrato);
 

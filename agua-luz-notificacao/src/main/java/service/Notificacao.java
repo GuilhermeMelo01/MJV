@@ -83,7 +83,7 @@ public class Notificacao {
         try {
 
             String contrato = new String(Files.readAllBytes(arquivo));
-            contratoList = new ArrayList<String>();
+            contratoList = new ArrayList<>();
 
             String[] contratoSeparado = contrato.split("\\n");
 
